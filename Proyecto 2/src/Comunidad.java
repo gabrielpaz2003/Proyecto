@@ -1,29 +1,33 @@
+import java.util.ArrayList;
+
 public class Comunidad  { //creamos la clase Comunidad
     private int personas;
     private String nombre;
     private ArrayList<Familia> familias;
-    private ArrayList<drenaje> drenajes; 
+    private ArrayList<Drenaje> drenajes; 
 
 	public Comunidad() {
         nombre = "";
     	personas = 0;
-        for(int i =0; i<4; i++) {
-            drenajes[i]= 0;
+        familias = new ArrayList<Familia>();
+		drenajes = new ArrayList<Drenaje>();
         }
         
-    }
 
 	public Comunidad(String nom, int per){
 		nombre = nom;
 		personas = per;
 	}
-        
+
+
+	
 	/** 
 	 * @return int
 	 */
 	public int getPersonas() {
 		return this.personas;
 	}
+
 	
 	/** 
 	 * @param personas
@@ -31,6 +35,7 @@ public class Comunidad  { //creamos la clase Comunidad
 	public void setPersonas(int personas) {
 		this.personas = personas;
 	}
+
 	
 	/** 
 	 * @return String
@@ -38,6 +43,7 @@ public class Comunidad  { //creamos la clase Comunidad
 	public String getNombre() {
 		return this.nombre;
 	}
+
 	
 	/** 
 	 * @param nombre
@@ -45,22 +51,41 @@ public class Comunidad  { //creamos la clase Comunidad
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	
 	/** 
-	 * @param capacidad
-	 * @param posicion
+	 * @return ArrayList<Familia>
 	 */
-	public void setDrenajes(int capacidad, int posicion){
-        drenajes[posicion] = capacidad;
-    }
+	public ArrayList<Familia> getFamilias() {
+		return this.familias;
+	}
 
+	
 	/** 
-	* @param posicion
-	* @return int
-	*/
-	public int getDrenajes(int posicion){
-		return drenajes[posicion];
-	}    
+	 * @param familias
+	 */
+	public void setFamilias(ArrayList<Familia> familias) {
+		this.familias = familias;
+	}
+
+	
+	/** 
+	 * @return ArrayList<Drenaje>
+	 */
+	public ArrayList<Drenaje> getDrenajes() {
+		return this.drenajes;
+	}
+
+	
+	/** 
+	 * @param drenajes
+	 */
+	public void setDrenajes(ArrayList<Drenaje> drenajes) {
+		this.drenajes = drenajes;
+	}
+
+        
+	
 
 	 /*
 	 * Calcular la vida útil de drenaje con base a los mantenimientos
@@ -82,7 +107,6 @@ public class Comunidad  { //creamos la clase Comunidad
 		if(cambios < 25){
 			String mensaje = "La vida útil está llegando a su fin.\nEn los siguientes meses debe considerar cambiar o dar un mantenimeinto fuerte al sistema";	
 			return mensaje;}
-	
 	}
 	
 	/** 

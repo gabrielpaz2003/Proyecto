@@ -1,3 +1,12 @@
+/*
+ * @author Sharis Barrios
+ * @author Gabriel Paz
+ * @author Oscar Fuentes
+ * @author David Trujillo
+ * @date 06- 10 - 2022
+ * Clase para crear una familia que son relevantes en una comunidad
+ */
+
 public class Familia {
     private int contador; 
     private int integrantes;
@@ -5,6 +14,14 @@ public class Familia {
     private int telefono;
     private int agua; 
 
+
+    public Familia() {
+        this.contador = 0;
+        this.integrantes = 0;
+        this.direccion = "";
+        this.telefono = 0;
+        this.agua = 0;
+    }
 
     public Familia(int contador, int integrantes, String direccion, int telefono, int agua) {
         this.contador = contador;
@@ -102,12 +119,10 @@ public class Familia {
     @Override
     public String toString() {
         return "{" +
-            " contador='" + getContador() + "'" +
-            ", integrantes='" + getIntegrantes() + "'" +
-            ", direccion='" + getDireccion() + "'" +
-            ", telefono='" + getTelefono() + "'" +
-            ", agua='" + getAgua() + "'" +
-            "}";
+            " El contador de agua de la vivienda en la dirección" + getDireccion()
+            + " es \n" + getContador() +
+            " La cantidad de integrantes de esta familia es " + getIntegrantes() + "\n" +
+            " Su télefono es " + getTelefono() + ", y la cantidad de agua asignada es " + getAgua() + "mL";
     }
 
 }

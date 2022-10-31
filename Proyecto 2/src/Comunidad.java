@@ -1,40 +1,36 @@
+/*
+ * @author Sharis Barrios
+ * @author Gabriel Paz
+ * @author Oscar Fuentes
+ * @author David Trujillo
+ * @date 06- 10 - 2022
+ * Clase para crear una comunidad con su sistema de dreanjes especificados
+ */
+
+
 import java.util.ArrayList;
 
-public class Comunidad  { //creamos la clase Comunidad
-    private int personas;
+public class Comunidad { //creamos la clase Comunidad
     private String nombre;
+	private String municipio;
     private ArrayList<Familia> familias;
     private ArrayList<Drenaje> drenajes; 
 
 	public Comunidad() {
         nombre = "";
-    	personas = 0;
+    	municipio = "";
         familias = new ArrayList<Familia>();
 		drenajes = new ArrayList<Drenaje>();
         }
         
 
-	public Comunidad(String nom, int per){
-		nombre = nom;
-		personas = per;
+	public Comunidad(String nombre, String municipio, ArrayList<Familia> familias, ArrayList<Drenaje> drenajes) {
+		this.nombre = nombre;
+		this.municipio = municipio;
+		this.familias = familias;
+		this.drenajes = drenajes;
 	}
-
-
 	
-	/** 
-	 * @return int
-	 */
-	public int getPersonas() {
-		return this.personas;
-	}
-
-	
-	/** 
-	 * @param personas
-	 */
-	public void setPersonas(int personas) {
-		this.personas = personas;
-	}
 
 	
 	/** 
@@ -50,6 +46,22 @@ public class Comunidad  { //creamos la clase Comunidad
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+
+	
+	/** 
+	 * @return String
+	 */
+	public String getMunicipio() {
+		return this.municipio;
+	}
+
+	
+	/** 
+	 * @param municipio
+	 */
+	public void setMunicipio(String municipio) {
+		this.municipio = municipio;
 	}
 
 	
@@ -83,42 +95,63 @@ public class Comunidad  { //creamos la clase Comunidad
 	public void setDrenajes(ArrayList<Drenaje> drenajes) {
 		this.drenajes = drenajes;
 	}
-
-        
+       
 	
+	/*
+	 * FUNCIONES CLAVE DE UNA COMUNIDAD
+	 */
+
+
+	public int calcularFamilias(){
+		return 0;
+	} 
+
+	public int calcularDrenajes(){
+		return 0;
+	}
+	
+	public void distribuirAgua(){
+
+	}
 
 	 /*
 	 * Calcular la vida útil de drenaje con base a los mantenimientos
 	 */
-	public String vidaUtilDrenajes(){
-		// Con la cantidad de mantimientos
-		int mantenimientos = 2;//cantMantenimientos(); 
-		int vidaUtilPromedio = 10; 
-		float cambios = mantenimientos*100/vidaUtilPromedio;
-		if(cambios >= 75 ){
-			String mensaje = "La vida útil está en un 75%";
-			return mensaje;}
-		if(cambios < 75 && cambios >= 50 ){
-			String mensaje = "La vida útil está en un 50%";
-			return mensaje;}
-		if(cambios < 50 && cambios >= 25 ){
-			String mensaje = "La vida útil está en un 25%\nEste es un estado de Alerta. ";
-			return mensaje;}
-		if(cambios < 25){
-			String mensaje = "La vida útil está llegando a su fin.\nEn los siguientes meses debe considerar cambiar o dar un mantenimeinto fuerte al sistema";	
-			return mensaje;}
+
+	public float porcentajeDeVida(int mantTotales, int mantHechos){
+		float cambios = mantHechos*100/mantTotales;
+		return cambios;
+	}	
+	
+	
+	public String vidaUtilDrenajes(){ 
+		String mensaje = "";
+		float cambios = 0;
+		for(Drenaje dren: drenajes){
+			cambios = porcentajeDeVida(dren.getMantenimientosHechos(), dren.getMantenimientoTotal())
+			if(cambios >= 75 ){
+				mensaje = "La vida útil del drenaje ubicado en " +dren.getUbicacion() +  "está en un 75%";
+				return mensaje;}
+			if(cambios < 75 && cambios >= 50 ){
+				mensaje = "La vida útil del drenaje ubicado en " +dren.getUbicacion() +  "está en un 50%";
+				return mensaje;}
+			if(cambios < 50 && cambios >= 25 ){
+				mensaje = "La vida útil del drenaje ubicado en " +dren.getUbicacion() +  "está en un 25%\nEste es un estado de Alerta. ";
+				return mensaje;}
+			if(cambios < 25){
+				mensaje = "La vida útil está llegando a su fin.\nEn los siguientes meses debe considerar cambiar o dar un mantenimeinto fuerte al sistema";	
+			}
+		}
 	}
+	
 	
 	/** 
 	 * @return String
 	 */
 	@Override
 	public String toString() {
-		return "{" +
-			" personas='" + getPersonas() + "'" +
-			", nombre='" + getNombre() + "'" +
-			", familias='" + getFamilias() + "'" +
-			", drenajes='" + getDrenajes() + "'" +
-			"}";
+		return "La comunidad " + getNombre() + " está ubicada en el municipio de " + getMunicipio()+
+			"La cantidad de familias que hay en la comunidad es de" + calcularFamilias() +  "\n" +
+			"Y la cantidad de drenajes de la comunidad es de " + calcularDrenajes();
 	}
 }

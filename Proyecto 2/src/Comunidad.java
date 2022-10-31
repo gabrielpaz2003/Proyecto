@@ -9,6 +9,7 @@
 
 
 import java.util.ArrayList;
+import java.lang.Math;
 
 public class Comunidad { //creamos la clase Comunidad
     private String nombre;
@@ -103,15 +104,19 @@ public class Comunidad { //creamos la clase Comunidad
 
 
 	public int calcularFamilias(){
-		return 0;
+		int cantFam = 0; 
+		cantFam = familias.size();
+		return cantFam;
 	} 
 
 	public int calcularDrenajes(){
-		return 0;
-	}
-	
-	public void distribuirAgua(){
-
+		// Por cada 100 personas debe haber un drenaje
+		int cantPersonas = 0; 
+		for(Familia fam: familias){
+			cantPersonas = cantPersonas + fam.getIntegrantes();
+		}
+		float drenaje = cantPersonas/100;
+		return Math.round(drenaje);
 	}
 
 	 /*
@@ -128,7 +133,7 @@ public class Comunidad { //creamos la clase Comunidad
 		String mensaje = "";
 		float cambios = 0;
 		for(Drenaje dren: drenajes){
-			cambios = porcentajeDeVida(dren.getMantenimientosHechos(), dren.getMantenimientoTotal())
+			cambios = porcentajeDeVida(dren.getCapacidad(), dren.getMantenimientosHechos())
 			if(cambios >= 75 ){
 				mensaje = "La vida útil del drenaje ubicado en " +dren.getUbicacion() +  "está en un 75%";
 				return mensaje;}
@@ -143,7 +148,6 @@ public class Comunidad { //creamos la clase Comunidad
 			}
 		}
 	}
-	
 	
 	/** 
 	 * @return String

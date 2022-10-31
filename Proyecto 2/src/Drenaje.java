@@ -1,3 +1,8 @@
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.Date;
+
 /*
  * @author Sharis Barrios
  * @author Gabriel Paz
@@ -9,51 +14,29 @@
 
 /*
  * CONOCIMIENTO PREVIO
- * La capacidad es la máxima por un drenaje y el mantenimeinto es la cantidad que necesita en su vida útil
- * Los mantenimientos se fijaran segun las capacidades. 
+ * La capacidad es la máxima por un drenaje y el mantenimeinto es la cantidad que se han realizado en su vida útil
  * Y la vida útil de un drenaje es de 10 años
  */
 
 public class Drenaje  { 
-	private float capacidad;
-	private int mantenimientoTotal;
+	private int capacidad;
 	private int mantenimientosHechos;
 	private String fechaInstalacion;
 	private String ubicacion;  
 
 	public Drenaje() {
 		this.capacidad = 0;
-		this.mantenimientoTotal = 0;
 		this.mantenimientosHechos = 0;
 		this.fechaInstalacion = "";
 		this.ubicacion = "";
 	}
 
 
-	public Drenaje(float capacidad, int mantenimientoTotal, int mantenimientosHechos, String fechaInstalacion, String ubicacion) {
+	public Drenaje(int capacidad, int mantenimientosHechos, String fechaInstalacion, String ubicacion) {
 		this.capacidad = capacidad;
-		this.mantenimientoTotal = mantenimientoTotal;
 		this.mantenimientosHechos = mantenimientosHechos;
 		this.fechaInstalacion = fechaInstalacion;
 		this.ubicacion = ubicacion;
-	}
-
-
-
-	
-	/** 
-	 * @return int
-	 */
-	public int getMantenimientoTotal() {
-		return this.mantenimientoTotal;
-	}
-
-	
-	/** 
-	 * @param mantenimientoTotal
-	 */
-	public void setMantenimientoTotal(int mantenimientoTotal) {
-		this.mantenimientoTotal = mantenimientoTotal;
 	}
 
 	
@@ -107,7 +90,7 @@ public class Drenaje  {
 	/** 
 	 * @return float
 	 */
-	public float getCapacidad() {
+	public int getCapacidad() {
 		return this.capacidad;
 	}
 
@@ -115,7 +98,7 @@ public class Drenaje  {
 	/** 
 	 * @param capacidad
 	 */
-	public void setCapacidad(float capacidad) {
+	public void setCapacidad(int capacidad) {
 		this.capacidad = capacidad;
 	}
 
@@ -124,16 +107,39 @@ public class Drenaje  {
 	 */
 
 	public void vaciarDrenaje(){
-
+		if(capacidad > 0){
+			capacidad = capacidad -1;
+		}
 	}
-
 
 	public void darMantenimiento(){
-
+		mantenimientosHechos = mantenimientosHechos + 1;
 	}
 
-	public void alertaMantenimiento(){
 
+	/**
+	 * Devuelve los días entre 2 fechas
+	 * @param fechaDesde
+	 * @param fechaHasta
+	 * @return
+	 */
+	public static long diasEntreDosFechas(Date fechaDesde, Date fechaHasta){
+		long startTime = fechaDesde.getTime() ;
+		long endTime = fechaHasta.getTime();
+		long diasDesde = (long) Math.floor(startTime / (1000*60*60*24)); // convertimos a dias, para que no afecten cambios de hora 
+		long diasHasta = (long) Math.floor(endTime / (1000*60*60*24)); // convertimos a dias, para que no afecten cambios de hora
+		long dias = diasHasta - diasDesde;
+
+		return dias;
+	}
+
+	public String alertaMantenimiento() throws ParseException{
+		float tiempo = 0; //cada cuanto, en días, se debe realizar un mantenimiento;
+		tiempo = (10*365)/capacidad;
+		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
+		formatter.parse(fechaInstalacion);
+	
+		return "";
 	}
 
 
@@ -143,8 +149,7 @@ public class Drenaje  {
 	 */
 	@Override
 	public String toString() {
-		return "El drenaje tiene una capacidad de " + getCapacidad() + " mL \n" +
-			"Se deben realizar "+ getMantenimientoTotal() + " mantenimientos en su vida útil \n"+
+		return "El drenaje tiene una capacidad de " + getCapacidad() + " mantenimientos en su vida útil (10 años) \n"+
 			"Así también, el drenaje está ubicado en la dirección " + getUbicacion();
 	}
 

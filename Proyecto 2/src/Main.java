@@ -1,3 +1,13 @@
+/*
+ * @author Sharis Barrios
+ * @author Gabriel Paz
+ * @author Oscar Fuentes
+ * @author David Trujillo
+ * @date 06- 10 - 2022
+ * Clase Main para crear todo el sistema de drenajes con la comunidad
+ */
+
+
 import java.util.Scanner;
 
 public class Main {

@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 
-/**
+/*
  * @author Sharis Barrios
  * @author Gabriel Paz
  * @author Oscar Fuentes

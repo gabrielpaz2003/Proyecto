@@ -1,5 +1,5 @@
 package model;
-/**
+/*
  * @author Sharis Barrios
  * @author Gabriel Paz
  * @author Oscar Fuentes

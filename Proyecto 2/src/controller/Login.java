@@ -1,0 +1,141 @@
+package controller;
+import model.Administrador;
+import model.Usuario;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+/**
+ * La clase login almacena los metodos necesarios para que un usuario se registre y se logee.
+ * @author gabrielpaz
+ */
+public class Login {
+
+    private static Scanner entrada = new Scanner(System.in);
+    public static ArrayList<Usuario> users = new ArrayList<>();
+
+    /**
+     * Setter para users
+     * @param users
+     */
+
+
+    /**
+     * @author gabrielpaz
+     * El metodo registra a un nuevo usuario en la plataforma.
+     */
+    public static void Registrar() {
+
+        while (true) {
+            System.out.println("Ingrese su nombre de usuario");
+            String newUser = entrada.nextLine();
+
+            if (userExists(users, newUser)) {
+                System.out.println("El usuario ya existe, intente con otro :*(\n");
+            } else {
+
+                System.out.println("Usuario " + newUser + " aceptado :)");
+                System.out.println("Ingrese su nueva contrasena");
+                String contasena = entrada.nextLine();
+                users.add(new Usuario(newUser,contasena));
+
+                //Se guarda usuario y contraseña encriptada en csv
+
+                System.out.println(newUser + " te has registrado exitosamente! :)\n");
+                break;
+            }
+        }
+
+        //Control point
+        System.out.println("Mostrando usuarios");
+        for(Usuario usuario: users){
+            System.out.println(usuario.getNombreUsuario());
+
+        }
+    }
+
+    /**
+     * Método de logeo, pend
+     * @return
+     */
+    public static int login(){
+
+        while (true) {
+            System.out.println("Ingrese su nombre de usuario");
+            String user = entrada.nextLine();
+
+            if (userExists(users,user)){
+                System.out.println("Usuario encontrado :)");
+                System.out.println("Ingrese la su contrasena");
+                String contrasena = entrada.nextLine();
+
+                //Logeo exitoso sin encriptado
+
+                if (getUser(user,users).getContrasena().equals(contrasena)){
+                    System.out.println("Logeado exitosamente");
+
+                    //Return index del usuario logeado
+                    return users.indexOf(getUser(user,users));
+
+                } else{
+                    System.out.println("Contrasena incorrecta");
+                }
+            } else{
+                System.out.println("Usuario no encontrado :(");
+            }
+        }
+
+    }
+
+    /**
+     * @author gabrielpaz
+     * Método verifica si un usario esta resgistrado o no.
+     * @param usuarios
+     * @param newUser
+     * @return bool
+     */
+    public static boolean userExists(ArrayList<Usuario> usuarios,String newUser){
+        for(int i = 0;i<usuarios.size();i++){
+            if (usuarios.get(i).getNombreUsuario().equals(newUser)){
+                return true;
+            }
+            }
+        return false;
+    }
+
+    /**
+     * @author gabrielpaz
+     * Método que construye al usuario administrador.
+     */
+    public static void setAdminUser(){
+        Administrador adminUser = new Administrador("Admin","contrasena");
+        users.add(adminUser);
+    }
+
+    /**
+     * @author gabrielpaz
+     * El metodo retorna el objeto de usuario dado su nombre
+     * @param UserName
+     * @param users
+     * @return
+     */
+    public static Usuario getUser(String UserName, ArrayList<Usuario> users){
+        for(int i = 0;i<users.size();i++) {
+            if (users.get(i).getNombreUsuario().equals(UserName)) {
+                return users.get(i);
+            }
+        }
+        return null;
+    }
+
+    /**
+     * @author gabrielpaz
+     * Getters para user
+     * @return
+     */
+    public static ArrayList<Usuario> getUserList(){
+        return users;
+    }
+
+}
+

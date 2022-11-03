@@ -1,7 +1,7 @@
 package controller;
+
 import model.Administrador;
 import model.Usuario;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -35,7 +35,6 @@ public class Login {
      * El metodo registra a un nuevo usuario en la plataforma.
      */
     public static void Registrar() {
-
         while (true) {
             System.out.println("Ingrese su nombre de usuario");
             String newUser = entrada.nextLine();

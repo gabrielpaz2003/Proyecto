@@ -40,7 +40,7 @@ public class Login {
         while (true) {
             System.out.println("Ingrese su nombre de usuario");
             String newUser = entrada.nextLine();
-            Archivo archivo = new Archivo(newUser);
+            Archivo archivo = new Archivo("Usuarios");
 
             if (userExists(users, newUser)) {
                 System.out.println("El usuario ya existe, intente con otro :*(\n");

@@ -125,9 +125,6 @@ public class Comunidad { //creamos la clase Comunidad
 		return cantPersonas;
 	} 
 
-
-
-	
 	/** 
 	 * @return int
 	 */

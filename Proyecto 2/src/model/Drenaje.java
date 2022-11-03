@@ -1,10 +1,5 @@
 package model;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-
 /*
  * @author Sharis Barrios
  * @author Gabriel Paz

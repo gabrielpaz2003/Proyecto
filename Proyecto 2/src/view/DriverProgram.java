@@ -93,23 +93,23 @@ public class DriverProgram {
                                 int a = 0;
                                 System.out.println("Seleccione la comunidad que utilizara le drenaje");
                                 for (int i = 0; i<comunity.length; i++){
-                                    System.out.println(i +" Nombre: "+ comunity[i].getNombre() + "| Cantidad de personas: "+ comunity[i].getPersonas());
+                                    System.out.println(i +" Nombre: "+ comunity[i].getNombre() + "| Cantidad de personas: "+ comunity[i].calcularPersonas());
                                     a++;
                                 }
                                 a = 0;
                                 int comu = scan.nextInt();
                                 System.out.println("Seleccione el drenaje que usara");
                                 for (int i = 0; i<3; i++){
-                                    System.out.println("Drenaje "+a+" : " + comunity[comu].getDrenajes(i)+"%");
+                                    System.out.println("Drenaje "+a+" : " + comunity[comu].getDrenajes().get(i)+"%");
                                     a++;
                                 }
                                 int dre = scan.nextInt();
-                                System.out.println("A que capacidad uso del drenaje? 0-100");
+                                System.out.println("¿Cuánta capacidad se usó del drenaje? 0-100");
                                 int cap = scan.nextInt();
                                 if (cap >= 0 && cap <= 100){
-                                    int total = comunity[comu].getDrenajes(dre)+ cap;
+                                    int total = comunity[comu].getDrenajes().get(dre).getCapacidad()+ cap;
                                     if (total>= 0 && total<= 100){
-                                        comunity[comu].setDrenajes(total, dre);
+                                        comunity[comu].getDrenajes().get(dre).setCapacidad(total);
                                     }
                                     else{
                                         System.out.println("Esa opcion de capacidad no es valida");
@@ -125,25 +125,25 @@ public class DriverProgram {
                             case 2:
                                 //VACIAR DRENAJES
                                 a = 0;
-                                System.out.println("Seleccione la comunidad que vaciara el drenaje");
+                                System.out.println("Seleccione la comunidad de la cual vaciará el drenaje");
                                 for (int i = 0; i<comunity.length; i++){
-                                    System.out.println(i +" Nombre: "+ comunity[i].getNombre() + "| Cantidad de personas: "+ comunity[i].getPersonas());
+                                    System.out.println(i +" Nombre: "+ comunity[i].getNombre() + "| Cantidad de personas: "+ comunity[i].calcularPersonas());
                                     a++;
                                 }
                                 a = 0;
                                 comu = scan.nextInt();
-                                System.out.println("Seleccione el drenaje que vaciara");
+                                System.out.println("Seleccione el drenaje que vaciará");
                                 for (int i = 0; i<3; i++){
-                                    System.out.println("Drenaje "+a+" : " + comunity[comu].getDrenajes(i)+"%");
+                                    System.out.println("Drenaje "+a+" : " + comunity[comu].getDrenajes().get(i)+"%");
                                     a++;
                                 }
                                 dre = scan.nextInt();
-                                System.out.println("cuanto vaciara el drenaje? 0-100");
+                                System.out.println("¿Cuánto vaciara del drenaje? 0-100");
                                 cap = scan.nextInt();
                                 if (cap >= 0 && cap <= 100){
-                                    int total = comunity[comu].getDrenajes(dre)- cap;
+                                    int total = comunity[comu].getDrenajes().get(dre).getCapacidad()- cap;
                                     if (total>= 0 && total<= 100){
-                                        comunity[comu].setDrenajes(total, dre);
+                                        comunity[comu].getDrenajes().get(dre).vaciarDrenaje(cap);
                                     }
                                     else{
                                         System.out.println("Esa opcion de capacidad no es valida");

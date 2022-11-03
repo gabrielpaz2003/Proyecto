@@ -2,6 +2,7 @@ package controller;
 
 import model.Administrador;
 import model.Usuario;
+import controller.Archivo;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -38,14 +39,17 @@ public class Login {
         while (true) {
             System.out.println("Ingrese su nombre de usuario");
             String newUser = entrada.nextLine();
-
+            
             if (userExists(users, newUser)) {
                 System.out.println("El usuario ya existe, intente con otro :*(\n");
-            } else {
-
+            } 
+            else {
+                Archivo archivo = new Archivo(String newUser);
                 System.out.println("Usuario " + newUser + " aceptado :)");
                 System.out.println("Ingrese su nueva contrasena");
                 String contasena = entrada.nextLine();
+                String linea =  System.out.println(newUser,contasena);
+                archivo.escribirArchivo(String linea)
                 users.add(new Usuario(newUser,contasena));
 
                 //Se guarda usuario y contraseña encriptada en csv

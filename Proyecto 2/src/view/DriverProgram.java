@@ -46,16 +46,17 @@ public class DriverProgram {
         //    System.out.println(usuario.getNombreUsuario());
         //}
 
-        while (true){
-            System.out.println("-------------------------------------------------------");
-            System.out.println("Bienvenido al sistema de control y manejo de drenajes");
-            System.out.println("-------------------------------------------------------");
+        
+        System.out.println("-------------------------------------------------------");
+        System.out.println("Bienvenido al sistema de control y manejo de drenajes");
+        System.out.println("-------------------------------------------------------");
 
-          System.out.println("1. Iniciar Sesion \n2. Crear Usuario \n3. Cerrar programa");
-            System.out.println("---------------------------------");
-            System.out.println("Porfavor seleccione una opcion (1-3)");
-            Integer opcion = scan.nextInt();
-
+        System.out.println("1. Iniciar Sesion \n2. Crear Usuario \n3. Cerrar programa");
+        System.out.println("---------------------------------");
+        System.out.println("Porfavor seleccione una opcion (1-3)");
+        Integer opcion = scan.nextInt();
+            
+        while (opcion != 3){
             switch (opcion){
                 case 1:
                     System.out.println("Logueando...");
@@ -65,6 +66,7 @@ public class DriverProgram {
                     System.out.println(userIndex);
 
                     //REGISTRAR LAS COMUNIDADES
+                    scan.nextLine();
                     for (int i = 0; i<comunity.length; i++){
                         System.out.println("Escriba el nombre de la Comunidad");
                         String nombre = scan.nextLine();
@@ -184,11 +186,16 @@ public class DriverProgram {
                 case 3:
                     
                     System.out.println("Gracias esperemos que vuelva pronto.");
-
                 default:
                     System.out.println("Debe ingresar una opción valida.");
                     break;
+
+                
             }
+        System.out.println("1. Iniciar Sesion \n2. Crear Usuario \n3. Cerrar programa");
+        System.out.println("---------------------------------");
+        System.out.println("Porfavor seleccione una opcion (1-3)");
+        opcion = scan.nextInt();
         }
     }
 }

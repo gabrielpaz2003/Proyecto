@@ -40,6 +40,8 @@ public class Archivo {
             e.printStackTrace();
         }
     }
+
+    
     public ArrayList<String> leerArchivo(){
         Scanner miLector;
         ArrayList<String> lineas = new ArrayList<String>();

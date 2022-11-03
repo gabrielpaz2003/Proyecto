@@ -35,25 +35,25 @@ public class Login {
      * @author gabrielpaz
      * El metodo registra a un nuevo usuario en la plataforma.
      */
+    
     public static void Registrar() {
         while (true) {
             System.out.println("Ingrese su nombre de usuario");
             String newUser = entrada.nextLine();
-            
+            Archivo archivo = new Archivo(newUser);
+
             if (userExists(users, newUser)) {
                 System.out.println("El usuario ya existe, intente con otro :*(\n");
-            } 
-            else {
-                Archivo archivo = new Archivo(String newUser);
+            } else {
+
                 System.out.println("Usuario " + newUser + " aceptado :)");
                 System.out.println("Ingrese su nueva contrasena");
                 String contasena = entrada.nextLine();
-                String linea =  System.out.println(newUser,contasena);
-                archivo.escribirArchivo(String linea)
                 users.add(new Usuario(newUser,contasena));
 
                 //Se guarda usuario y contraseña encriptada en csv
-
+                String linea = newUser +", " + contasena;
+                archivo.escribirArchivo(linea);
                 System.out.println(newUser + " te has registrado exitosamente! :)\n");
                 break;
             }
@@ -63,7 +63,6 @@ public class Login {
         System.out.println("Mostrando usuarios");
         for(Usuario usuario: users){
             System.out.println(usuario.getNombreUsuario());
-
         }
     }
 

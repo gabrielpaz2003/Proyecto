@@ -1,8 +1,3 @@
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.Date;
-
 /*
  * @author Sharis Barrios
  * @author Gabriel Paz
@@ -102,9 +97,6 @@ public class Drenaje  {
 		this.capacidad = capacidad;
 	}
 
-	/*
-	 * FUNCIONES CLAVE DE UN DREANJE
-	 */
 
 	public void vaciarDrenaje(){
 		if(capacidad > 0){
@@ -117,33 +109,6 @@ public class Drenaje  {
 	}
 
 
-	/**
-	 * Devuelve los días entre 2 fechas
-	 * @param fechaDesde
-	 * @param fechaHasta
-	 * @return
-	 */
-	public static long diasEntreDosFechas(Date fechaDesde, Date fechaHasta){
-		long startTime = fechaDesde.getTime() ;
-		long endTime = fechaHasta.getTime();
-		long diasDesde = (long) Math.floor(startTime / (1000*60*60*24)); // convertimos a dias, para que no afecten cambios de hora 
-		long diasHasta = (long) Math.floor(endTime / (1000*60*60*24)); // convertimos a dias, para que no afecten cambios de hora
-		long dias = diasHasta - diasDesde;
-
-		return dias;
-	}
-
-	public String alertaMantenimiento() throws ParseException{
-		float tiempo = 0; //cada cuanto, en días, se debe realizar un mantenimiento;
-		tiempo = (10*365)/capacidad;
-		SimpleDateFormat formatter = new SimpleDateFormat("yyyy-mm-dd");
-		formatter.parse(fechaInstalacion);
-	
-		return "";
-	}
-
-
-
 	/** 
 	 * @return String
 	 */
@@ -152,6 +117,5 @@ public class Drenaje  {
 		return "El drenaje tiene una capacidad de " + getCapacidad() + " mantenimientos en su vida útil (10 años) \n"+
 			"Así también, el drenaje está ubicado en la dirección " + getUbicacion();
 	}
-
 
 }

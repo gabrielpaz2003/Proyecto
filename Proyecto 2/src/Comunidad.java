@@ -133,20 +133,21 @@ public class Comunidad { //creamos la clase Comunidad
 		String mensaje = "";
 		float cambios = 0;
 		for(Drenaje dren: drenajes){
-			cambios = porcentajeDeVida(dren.getCapacidad(), dren.getMantenimientosHechos())
+			cambios = porcentajeDeVida(dren.getCapacidad(), dren.getMantenimientosHechos());
 			if(cambios >= 75 ){
-				mensaje = "La vida útil del drenaje ubicado en " +dren.getUbicacion() +  "está en un 75%";
+				mensaje = mensaje + dren.toString() + "La vida útil del drenaje ubicado en " +dren.getUbicacion() +  "está en un 75% \n";
 				return mensaje;}
 			if(cambios < 75 && cambios >= 50 ){
-				mensaje = "La vida útil del drenaje ubicado en " +dren.getUbicacion() +  "está en un 50%";
+				mensaje = mensaje + dren.toString() + "La vida útil del drenaje ubicado en " +dren.getUbicacion() +  "está en un 50% \n";
 				return mensaje;}
 			if(cambios < 50 && cambios >= 25 ){
-				mensaje = "La vida útil del drenaje ubicado en " +dren.getUbicacion() +  "está en un 25%\nEste es un estado de Alerta. ";
+				mensaje = mensaje + dren.toString() + "La vida útil del drenaje ubicado en " +dren.getUbicacion() +  "está en un 25%\nEste es un estado de Alerta. \n";
 				return mensaje;}
 			if(cambios < 25){
-				mensaje = "La vida útil está llegando a su fin.\nEn los siguientes meses debe considerar cambiar o dar un mantenimeinto fuerte al sistema";	
+				mensaje = mensaje + dren.toString() + "La vida útil está llegando a su fin.\nEn los siguientes meses debe considerar cambiar o dar un mantenimeinto fuerte al sistema \n";	
 			}
 		}
+		return mensaje;
 	}
 	
 	/** 

@@ -98,6 +98,10 @@ public class Comunidad { //creamos la clase Comunidad
 	}
        
 	
+	
+	/** 
+	 * @return int
+	 */
 	/*
 	 * FUNCIONES CLAVE DE UNA COMUNIDAD
 	 */
@@ -107,8 +111,26 @@ public class Comunidad { //creamos la clase Comunidad
 		int cantFam = 0; 
 		cantFam = familias.size();
 		return cantFam;
+	}
+	
+	
+	/** 
+	 * @return int
+	 */
+	public int calcularPersonas(){
+		int cantPersonas = 0; 
+		for(Familia fam: familias){
+			cantPersonas = cantPersonas + fam.getIntegrantes();
+		}
+		return cantPersonas;
 	} 
 
+
+
+	
+	/** 
+	 * @return int
+	 */
 	public int calcularDrenajes(){
 		// Por cada 100 personas debe haber un drenaje
 		int cantPersonas = 0; 
@@ -119,6 +141,12 @@ public class Comunidad { //creamos la clase Comunidad
 		return Math.round(drenaje);
 	}
 
+	 
+	 /** 
+	  * @param mantTotales
+	  * @param mantHechos
+	  * @return float
+	  */
 	 /*
 	 * Calcular la vida útil de drenaje con base a los mantenimientos
 	 */
@@ -129,11 +157,15 @@ public class Comunidad { //creamos la clase Comunidad
 	}	
 	
 	
+	
+	/** 
+	 * @return String
+	 */
 	public String vidaUtilDrenajes(){ 
 		String mensaje = "";
 		float cambios = 0;
 		for(Drenaje dren: drenajes){
-			cambios = porcentajeDeVida(dren.getCapacidad(), dren.getMantenimientosHechos());
+			cambios = porcentajeDeVida(dren.getMantTotales(), dren.getMantenimientosHechos());
 			if(cambios >= 75 ){
 				mensaje = mensaje + dren.toString() + "La vida útil del drenaje ubicado en " +dren.getUbicacion() +  "está en un 75% \n";
 				return mensaje;}

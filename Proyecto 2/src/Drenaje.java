@@ -9,12 +9,14 @@
 
 /*
  * CONOCIMIENTO PREVIO
- * La capacidad es la máxima por un drenaje y el mantenimeinto es la cantidad que se han realizado en su vida útil
+ * La capacidad inicia en cero y conforme se utiliza va aumentando hasta llegar a un 100%
+ * El mantenimeinto es la cantidad que se han realizado en su vida útil
  * Y la vida útil de un drenaje es de 10 años
  */
 
 public class Drenaje  { 
 	private int capacidad;
+	private int mantTotales;
 	private int mantenimientosHechos;
 	private String fechaInstalacion;
 	private String ubicacion;  
@@ -24,17 +26,34 @@ public class Drenaje  {
 		this.mantenimientosHechos = 0;
 		this.fechaInstalacion = "";
 		this.ubicacion = "";
+		this.mantTotales = 0;
 	}
 
 
-	public Drenaje(int capacidad, int mantenimientosHechos, String fechaInstalacion, String ubicacion) {
+	public Drenaje(int capacidad,int mantTotales, int mantenimientosHechos, String fechaInstalacion, String ubicacion) {
 		this.capacidad = capacidad;
 		this.mantenimientosHechos = mantenimientosHechos;
 		this.fechaInstalacion = fechaInstalacion;
 		this.ubicacion = ubicacion;
+		this.mantTotales = mantTotales;
 	}
 
 	
+	/** 
+	 * @return int
+	 */
+	public int getMantTotales() {
+		return this.mantTotales;
+	}
+
+	
+	/** 
+	 * @param mantTotales
+	 */
+	public void setMantTotales(int mantTotales) {
+		this.mantTotales = mantTotales;
+	}
+
 	/** 
 	 * @return int
 	 */
@@ -98,10 +117,8 @@ public class Drenaje  {
 	}
 
 
-	public void vaciarDrenaje(){
-		if(capacidad > 0){
-			capacidad = capacidad -1;
-		}
+	public void vaciarDrenaje(int cantidad){
+		capacidad = capacidad - cantidad;
 	}
 
 	public void darMantenimiento(){
@@ -114,7 +131,7 @@ public class Drenaje  {
 	 */
 	@Override
 	public String toString() {
-		return "El drenaje tiene una capacidad de " + getCapacidad() + " mantenimientos en su vida útil (10 años) \n"+
+		return "El drenaje tiene una capacidad de " + getCapacidad() + "\n Y tiene una cantidad de mantenimientos en su vida útil (10 años) de \n"+ getMantTotales()+
 			"Así también, el drenaje está ubicado en la dirección " + getUbicacion();
 	}
 

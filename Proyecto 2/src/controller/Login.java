@@ -5,8 +5,18 @@ import model.Usuario;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+
 /**
- * La clase login almacena los metodos necesarios para que un usuario se registre y se logee.
+ * @author Sharis Barrios
+ * @author Gabriel Paz
+ * @author Oscar Fuentes
+ * @author David Trujillo
+ * @date 06- 10 - 2022
+ * La clase login almacena los métodos necesarios para que un usuario se registre y se logee.
+ */
+
+
+/**
  * @author gabrielpaz
  */
 public class Login {

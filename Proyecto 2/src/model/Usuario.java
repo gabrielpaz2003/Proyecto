@@ -2,10 +2,15 @@ package model;
 import java.io.*;
 import java.util.ArrayList;
 
-/**
- * Clase que almacenara la informacion sobre el usuario: nombre, contrasena y los persmisos que tenga la cuenta
- * @autor Jose Gramajo
+/*
+ * @author Sharis Barrios
+ * @author Gabriel Paz
+ * @author Oscar Fuentes
+ * @author David Trujillo
+ * @date 06- 10 - 2022
+ * Clase que almacenara la informacion sobre el usuario: nombre, contrasena y los permisos que tenga la cuenta
  */
+ 
 public class Usuario implements Serializable{
     protected String NombreUsuario;
     protected String Contrasena;

@@ -111,8 +111,7 @@ public class DriverProgram {
                                                     switch (opci){
                                                         case 1:
                                                             System.out.println("Porfavor ingrese la fecha de instalacion");
-                                                            scan.nextLine();
-                                                            String fecha= scan.nextLine();
+                                                            String fecha = scan.nextLine();
                                                             comunity.get(com-1).instalarDrenaje(dre-1, fecha);
                                                         break;
                                                         case 2:
@@ -205,7 +204,6 @@ public class DriverProgram {
                     
                     
                     
-
 
                 case 2:
                     System.out.println("Ventana de registro");

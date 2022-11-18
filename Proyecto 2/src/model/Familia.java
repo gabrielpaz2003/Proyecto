@@ -10,27 +10,27 @@ package model;
  */
 
 public class Familia {
+    private String apellido;
     private int contador; 
     private int integrantes;
     private String direccion; 
     private int telefono;
-    private int agua; 
 
 
     public Familia() {
+        this.apellido = "";
         this.contador = 0;
         this.integrantes = 0;
         this.direccion = "";
         this.telefono = 0;
-        this.agua = 0;
     }
 
-    public Familia(int contador, int integrantes, String direccion, int telefono, int agua) {
+    public Familia(String apellido,int contador, int integrantes, String direccion, int telefono) {
+        this.apellido = apellido;
         this.contador = contador;
         this.integrantes = integrantes;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.agua = agua;
     }
 
 
@@ -58,6 +58,12 @@ public class Familia {
         return this.integrantes;
     }
 
+    /** 
+     * @return String
+     */
+    public String getApellido() {
+        return this.apellido;
+    }
     
     /** 
      * @param integrantes
@@ -100,31 +106,16 @@ public class Familia {
 
     
     /** 
-     * @return int
-     */
-    public int getAgua() {
-        return this.agua;
-    }
-
-    
-    /** 
-     * @param agua
-     */
-    public void setAgua(int agua) {
-        this.agua = agua;
-    }
-
-    
-    /** 
      * @return String
      */
     @Override
     public String toString() {
-        return "{" +
-            " El contador de agua de la vivienda en la dirección" + getDireccion()
-            + " es \n" + getContador() +
-            " La cantidad de integrantes de esta familia es " + getIntegrantes() + "\n" +
-            " Su télefono es " + getTelefono() + ", y la cantidad de agua asignada es " + getAgua() + "mL";
+        return
+            "APELLIDO DE FAMILIA: "+getApellido()+
+            "\nCONTADOR:"+ getContador()+ 
+            "\nDIRECCION: " + getDireccion() +
+            "\nINTEGRANTES: "+ getIntegrantes() +
+            "\nTELEFONO: " + getTelefono();
     }
 
 }

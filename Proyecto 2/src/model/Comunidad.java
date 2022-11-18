@@ -31,8 +31,105 @@ public class Comunidad { //creamos la clase Comunidad
 		this.familias = familias;
 		this.drenajes = drenajes;
 	}
-	
 
+
+	
+	/** 
+	 * @param familia
+	 */
+	public void agregarFamilia(Familia familia){
+		familias.add(familia);
+	}
+
+	
+	/** 
+	 * @param cantidad
+	 * @param drenaje
+	 */
+	public void agregarDrenajes(int cantidad, Drenaje drenaje){
+		for (int i = 0; i < cantidad;i++){
+			drenajes.add(drenaje);
+		}
+	}
+
+	public void mostrarFamilias(){
+		for (int i = 0; i < familias.size();i++){
+			System.out.println((i+1)+" "+familias.get(i).toString());
+		}
+	}
+	public void mostrarDrenajes(){
+		for (int i = 0; i < drenajes.size();i++){
+			System.out.println((i+1)+" "+drenajes.get(i).toString());
+		}
+	}
+	
+	
+	/** 
+	 * @return String
+	 */
+	public void getDrenajes(){
+		for (int i = 0; i < drenajes.size();i++){
+			System.out.println((i+1)+" "+drenajes.get(i).getDrenaje());
+		}
+	}
+
+	
+	/** 
+	 * @param posicion
+	 */
+	public void getDrenaje(int posicion){
+		System.out.println(drenajes.get(posicion).toString());
+	}
+
+	
+	/** 
+	 * @param posicion
+	 * @param fecha
+	 */
+	public void instalarDrenaje(int posicion, String fecha){
+		drenajes.get(posicion).setFechaInstalacion(fecha);
+	}
+
+	
+	/** 
+	 * @param posicion
+	 */
+	public void usarDrenaje(int posicion){
+		int cap = drenajes.get(posicion).getCapacidad();
+		int total = cap - 20;
+		if(cap<=20){
+			System.out.println("No se puede usar el drenaje porfavor dar mantenimiento");
+		}else{
+			drenajes.get(posicion).setCapacidad(total);
+		}
+		System.out.println("CAPACIDAD DE DRENAJE: "+total+"%");
+
+	}
+
+	
+	/** 
+	 * @param posicion
+	 */
+	public void darMantenimiento(int posicion){
+		int cap = drenajes.get(posicion).getCapacidad();
+		int mantenimientos = drenajes.get(posicion).getMantTotales();
+		int total = cap + 20;
+		int mantenimientosTotal = mantenimientos + 1;
+		if(cap>=100){
+			System.out.println("El drenaje se encuentra en buen estado no es necesario el mantenimiento");
+		}else{
+			drenajes.get(posicion).setCapacidad(total);
+			drenajes.get(posicion).setMantTotales(mantenimientosTotal);
+		}
+		System.out.println("CAPACIDAD DE DRENAJE: "+total+"%");
+	}
+
+	/** 
+	 * @return ArrayList<Drenaje>
+	 */
+	public ArrayList<Drenaje> getDrenajeArray() {
+		return this.drenajes;
+	}
 	
 	/** 
 	 * @return String
@@ -79,14 +176,6 @@ public class Comunidad { //creamos la clase Comunidad
 	 */
 	public void setFamilias(ArrayList<Familia> familias) {
 		this.familias = familias;
-	}
-
-	
-	/** 
-	 * @return ArrayList<Drenaje>
-	 */
-	public ArrayList<Drenaje> getDrenajes() {
-		return this.drenajes;
 	}
 
 	
@@ -138,6 +227,8 @@ public class Comunidad { //creamos la clase Comunidad
 		return Math.round(drenaje);
 	}
 
+	
+
 	 
 	 /** 
 	  * @param mantTotales
@@ -184,8 +275,6 @@ public class Comunidad { //creamos la clase Comunidad
 	 */
 	@Override
 	public String toString() {
-		return "La comunidad " + getNombre() + " está ubicada en el municipio de " + getMunicipio()+
-			"La cantidad de familias que hay en la comunidad es de" + calcularFamilias() +  "\n" +
-			"Y la cantidad de drenajes de la comunidad es de " + calcularDrenajes();
+		return "La comunidad " + getNombre() + " está ubicada en el municipio de " + getMunicipio();
 	}
 }

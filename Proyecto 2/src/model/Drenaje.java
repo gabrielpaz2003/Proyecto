@@ -22,13 +22,16 @@ public class Drenaje  {
 	private String fechaInstalacion;
 	private String ubicacion;  
 
-	public Drenaje() {
-		this.capacidad = 0;
+	
+	public Drenaje(String ubicacion) {
+		this.capacidad = 100;
 		this.mantenimientosHechos = 0;
 		this.fechaInstalacion = "";
-		this.ubicacion = "";
+		this.ubicacion = ubicacion;
 		this.mantTotales = 0;
 	}
+
+	
 
 
 	public Drenaje(int capacidad,int mantTotales, int mantenimientosHechos, String fechaInstalacion, String ubicacion) {
@@ -39,7 +42,6 @@ public class Drenaje  {
 		this.mantTotales = mantTotales;
 	}
 
-	
 	/** 
 	 * @return int
 	 */
@@ -118,6 +120,10 @@ public class Drenaje  {
 	}
 
 
+	
+	/** 
+	 * @param cantidad
+	 */
 	public void vaciarDrenaje(int cantidad){
 		capacidad = capacidad - cantidad;
 	}
@@ -125,15 +131,22 @@ public class Drenaje  {
 	public void darMantenimiento(){
 		mantenimientosHechos = mantenimientosHechos + 1;
 	}
-
+	
+	
+	/** 
+	 * @return String
+	 */
+	public String getDrenaje() {
+		return "Drenaje";
+	}
 
 	/** 
 	 * @return String
 	 */
 	@Override
 	public String toString() {
-		return "El drenaje tiene una capacidad de " + getCapacidad() + "\n Y tiene una cantidad de mantenimientos en su vida útil (10 años) de \n"+ getMantTotales()+
-			"Así también, el drenaje está ubicado en la dirección " + getUbicacion();
+		return "CAPACIDAD: " + getCapacidad()+"%" + "\nMANTENIMIENTOS:"+ getMantTotales()+
+			"\nUBICACION: " + getUbicacion() + "\nFECHA DE INSTALACION:"+ getFechaInstalacion();
 	}
 
 }
